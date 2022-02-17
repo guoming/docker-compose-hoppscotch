@@ -1,1 +1,4 @@
-# docker-redis-example
+Run with:
+``` SHELL
+./start.sh
+```

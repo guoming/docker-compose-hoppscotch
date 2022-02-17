@@ -1,9 +1,4 @@
 version: '3.5'
-networks:
-  microservice:
-    external:
-      name: microservice
-
 services:
   redis:
     restart: always
@@ -14,13 +9,7 @@ services:
       condition: on-failure
     ports:
      - "6379:6379"
-    networks:
-      - microservice
     environment:     
-     - SERVICE_NAME=elasticsearch
-     - SERVICE_TAGS=db,elasticsearch
+     - SERVICE_NAME=redis
+     - SERVICE_TAGS=db,redis
      - SERVICE_REGION=DC1
-     - SERVICE_CHECK_INITIAL_STATUS=passing
-     - SERVICE_80_CHECK_HTTP=/healthcheck
-     - SERVICE_80_CHECK_INTERVAL=15s
-     - SERVICE_80_CHECK_TIMEOUT=15s
