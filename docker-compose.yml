@@ -1,4 +1,9 @@
 version: '3.5'
+networks:
+  redis:
+    external:
+      name: redis
+
 services:
   redis:
     restart: always
@@ -9,6 +14,8 @@ services:
       condition: on-failure
     ports:
      - "6379:6379"
+    networks:
+      - redis
     environment:     
      - SERVICE_NAME=redis
      - SERVICE_TAGS=db,redis
